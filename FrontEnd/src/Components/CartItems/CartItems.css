@@ -1,0 +1,125 @@
+.cartitems{
+    margin: 100px 170px;
+}
+.cartitems hr{
+    height: 3px;
+    background: #e2e2e2;
+    border: 0;
+}
+.cartitems-format-main{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+    padding: 20px 0px;
+    color: #454545;
+    font-size: 18px;
+    font-weight: 600;
+}
+.cartitems-format{
+    font-size: 17px;
+    font-weight: 500;
+}
+.carticon-product-icon{
+    height: 62px;
+}
+.carticons-remove-icon{
+    width: 15px;
+    margin: 0px 40px;
+    cursor: pointer;
+}
+.cartitems-quantity{
+     width: 64px;
+     height: 50px;
+     border: 2px solid #ebebeb;
+     background: #fff;
+}
+.cartitems-down{
+    display: flex;
+    margin: 100px 0px;
+}
+.cartitems-total{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+    gap: 40px;
+}
+.cartitems-total-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+.cartitems-down button{
+    border-radius: 5px;
+    border-width: 5px;
+    width: 180px;
+    height: 50px;
+    border: solid;
+    background: wheat;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.order-placed-popup {
+    width: 400px;
+    height: 200px;
+    position: fixed; /* Makes the popup stay in place when scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the popup on the screen */
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 10; /* Ensures the popup is displayed above other elements */
+  }
+  
+  .order-placed-popup h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .order-placed-popup p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .order-placed-popup button {
+    
+    /* background-color: black;  */
+    /* color: white; */
+    /* padding: 10px 40px; */
+    border: black;
+    border-radius: 5px;
+    border-width: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 180px;
+    height: 50px;
+    border: solid;
+    background: wheat;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .order-placed-popup button:hover {
+    background-color: wheat; /* Darker green on hover */
+  }
+  .empty-cart-message {
+    background-color: #ffecec; /* Light red background to indicate an error */
+    border: 1px solid #f0ad4e; /* Orange border to match the theme (optional) */
+    padding: 10px 20px; /* Inner padding for spacing */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    font-weight: bold; /* Emphasize the message */
+    margin-bottom: 15px; /* Add space below the message */
+    text-align: center; /* Center the text alignment */
+    width: fit-content; /* Allow the message to adjust its width to the content */
+    max-width: 400px; /* Set a maximum width to prevent it from overflowing */
+  }
+  
+  
