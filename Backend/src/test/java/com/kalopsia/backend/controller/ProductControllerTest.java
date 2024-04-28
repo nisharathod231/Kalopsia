@@ -63,7 +63,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetShouldReturn200OK() throws Exception {
+    public void shouldReturnSpecifiedProductWhenProductIdIsGiven() throws Exception {
         int productId = 0;
         when(productService.getProduct(productId)).thenReturn(expectedProducts.get(productId));
 
@@ -76,7 +76,7 @@ public class ProductControllerTest {
 
         Product actualProduct = mapper.readValue(responseBody, new TypeReference<>(){});
 
-        assertNotNull(actualProduct, "Response should contain the first product.");
-        assertEquals(expectedProducts.get(0), actualProduct, "Retrieved product should match expected product.");
+        assertNotNull(actualProduct);
+        assertEquals(expectedProducts.get(0), actualProduct);
     }
 }

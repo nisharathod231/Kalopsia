@@ -49,7 +49,7 @@ class ProductServiceImplTest {
 
         Product retrievedProduct = productService.getProduct(productId);
 
-        assertNotNull(retrievedProduct, "getProduct should return a product");
-        assertEquals(expectedProduct, retrievedProduct, "Retrieved product should match expected product");
+        assertNotNull(retrievedProduct);
+        assertEquals(expectedProduct, retrievedProduct);
     }
 }
