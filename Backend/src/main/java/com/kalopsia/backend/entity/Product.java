@@ -26,12 +26,4 @@ public class Product {
     private String image;
 
     private String category;
-
-    public Product(String name, int oldPrice, int newPrice, String image, String category) {
-        this.name = name;
-        this.oldPrice = oldPrice;
-        this.newPrice = newPrice;
-        this.image = image;
-        this.category = category;
-    }
 }

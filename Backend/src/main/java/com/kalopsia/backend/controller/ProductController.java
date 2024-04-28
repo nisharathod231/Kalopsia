@@ -20,7 +20,6 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getAllProducts() {
-        System.out.println("inside");
         return productService.getAllProducts();
     }
 
@@ -29,8 +28,4 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
-    @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
-    }
 }
