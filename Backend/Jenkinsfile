@@ -8,7 +8,7 @@ pipeline {
         }
         stage ("Build via Maven") {
             steps {
-                sh 'cd Backend'
+                sh 'cd Backend/'
                 sh 'pwd'
                 sh 'mvn clean install'
             }
