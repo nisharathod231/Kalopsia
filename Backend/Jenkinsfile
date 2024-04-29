@@ -3,13 +3,11 @@ pipeline {
     stages {
         stage ("Clone Git") {
             steps {
-                git branch: 'main', url: 'https://github.com/nisharathod231/Kalopsia.git'
+                git branch: 'main', url: 'https://github.com/nisharathod231/Kalopsia.git/Backend'
             }
         }
         stage ("Build via Maven") {
             steps {
-                sh 'cd Backend/'
-                sh 'pwd'
                 sh 'mvn clean install'
             }
         }
