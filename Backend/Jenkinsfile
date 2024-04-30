@@ -8,7 +8,9 @@ pipeline {
         }
         stage ("Build via Maven") {
             steps {
-                sh 'mvn -f Backend/pom.xml clean install'
+                dir('Backend') {
+                    sh 'mvn clean install'
+                }
             }
         }
     }
