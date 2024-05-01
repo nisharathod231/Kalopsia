@@ -23,6 +23,20 @@ pipeline {
                 }
             }
         }
+        stage ("Print") {
+            steps {
+                sh 'pwd'
+                sd 'ls'
+            }
+        }
+        stage ("Print inside backend") {
+            steps {
+                dir('Backend') {
+                    sh 'pwd'
+                    sd 'ls'
+                }
+            }
+        }
         stage ("Sonar Analysis") {
             steps {
                 dir('Backend') {
