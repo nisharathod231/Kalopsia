@@ -37,6 +37,14 @@ pipeline {
                 }
             }
         }
+        stage ("Print inside backend target") {
+            steps {
+                dir('Backend/target') {
+                    sh 'pwd'
+                    sh 'ls'
+                }
+            }
+        }
         stage ("SonarQube Analysis") {
             steps {
                 dir('Backend') {
