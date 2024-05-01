@@ -16,7 +16,7 @@ pipeline {
                 }
             }
         }
-        stage ("Build via Maven") {
+        stage ("Test via Maven") {
             steps {
                 dir('Backend') {
                     sh 'mvn test'
