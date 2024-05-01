@@ -1,36 +1,18 @@
 pipeline {
     agent any
     options {
-        timestamps() // Optional: Adds timestamps to your pipeline stages
+        timestamps()
     }
-
-    jobs {
-        job('Checkout') {
+    stages {
+        stage ("Clone Git") {
             steps {
                 git branch: 'main', url: 'https://github.com/nisharathod231/Kalopsia.git'
             }
         }
-        job('Backend Build & Test') {
-            successThreshold(unstableWins: true)
-            stages {
-                stage('Build Backend') {
-                    steps {
-                        script {
-                            dir('Backend') {
-                                sh 'mvn clean install'
-                            }
-                        }
-                    }
-                }
-
-                stage('Run Tests') {
-                    steps {
-                        script {
-                            dir('Backend') {
-                                sh 'mvn test'
-                            }
-                        }
-                    }
+        stage ("Build via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn clean install'
                 }
             }
         }
