@@ -47,7 +47,7 @@ class ProductServiceImplTest {
         Product expectedProduct = new Product(2, "Mock-Name-2", 20, 10, "Mock-Image-URL-2", "Mock-Category-2");
         when(productRepository.findById(productId)).thenReturn(Optional.of(expectedProduct));
 
-        Product retrievedProduct = productService.getProduct(productId);
+        Product retrievedProduct = productService.getProduct(1);
 
         assertNotNull(retrievedProduct);
         assertEquals(expectedProduct, retrievedProduct);
