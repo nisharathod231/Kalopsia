@@ -35,7 +35,7 @@ if (isLoading) {
   const filteredItems = data.filter(item => item.category === props.category);
 
   return (
-    <div className='shop-category'>
+    <div className='shop-category' data-testid='product-list'>
       <div className="shopcategory-products">
         {filteredItems.map((item) => (
           <Item key={item.id} id={item.id} name={item.name} image={item.image} new_price={item.newPrice} old_price={item.oldPrice} />
