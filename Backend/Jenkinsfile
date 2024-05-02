@@ -23,28 +23,6 @@ pipeline {
                 }
             }
         }
-        stage ("Print") {
-            steps {
-                sh 'pwd'
-                sh 'ls'
-            }
-        }
-        stage ("Print inside backend") {
-            steps {
-                dir('Backend') {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
-        }
-        stage ("Print inside backend target") {
-            steps {
-                dir('Backend/target') {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
-        }
         stage ("Check Code Coverage") {
             steps {
                 dir('Backend') {
