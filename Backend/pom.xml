@@ -136,6 +136,7 @@
                     <excludes>
                         <exclude>**/BackendApplication.**</exclude>
                         <exclude>**/Product.**</exclude>
+                        <exclude>**Test.java**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
