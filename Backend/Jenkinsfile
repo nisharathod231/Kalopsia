@@ -3,6 +3,9 @@ pipeline {
     options {
         timestamps()
     }
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
     stages {
         stage ("Clone Git") {
             steps {
@@ -33,10 +36,12 @@ pipeline {
         stage ("SonarQube Analysis") {
             steps {
                 dir('Backend') {
-                    sh ''' mvn sonar:sonar -Dsonar.url=http://localhost:9000/ -Dsonar.login=squ_220b6a20bb8c0a32af234c6af40ad105fa58ebdf \
-                    -Dsonar.projectName=KalopsiaBackend \
-                    -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=KalopsiaBackend '''
+                    withSonarQubeEnv('sonar-server') {
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectName=KalopsiaBackend \
+                        -Dsonar.java.binaries=. \
+                        -Dsonar.projectKey=KalopsiaBackend '''
+                    }
                 }
             }
         }
