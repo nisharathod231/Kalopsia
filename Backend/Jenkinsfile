@@ -34,9 +34,9 @@ pipeline {
             steps {
                 dir('Backend') {
                     sh ''' mvn sonar:sonar -Dsonar.url=http://localhost:9000/ -Dsonar.login=squ_220b6a20bb8c0a32af234c6af40ad105fa58ebdf \
-                    -Dsonar.projectName=Kalopsia \
+                    -Dsonar.projectName=KalopsiaBackend \
                     -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=Kalopsia '''
+                    -Dsonar.projectKey=KalopsiaBackend '''
                 }
             }
         }
