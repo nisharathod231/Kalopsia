@@ -12,7 +12,7 @@ pipeline {
         stage ("Compile via Maven") {
             steps {
                 dir('Backend') {
-                    sh 'mvn compile'
+                    sh 'mvn clean compile'
                 }
             }
         }
@@ -42,6 +42,13 @@ pipeline {
                 dir('Backend/target') {
                     sh 'pwd'
                     sh 'ls'
+                }
+            }
+        }
+        stage ("Check Code Coverage") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn verify'
                 }
             }
         }
