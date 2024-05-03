@@ -3,6 +3,9 @@ pipeline {
     options {
         timestamps()
     }
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
     stages {
         stage ("Clone Git") {
             steps {
@@ -12,7 +15,57 @@ pipeline {
         stage ("Compile via Maven") {
             steps {
                 dir('Backend') {
-                    sh 'npm install'
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        stage ("Unit Tests via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage ("Check Code Coverage") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn verify'
+                }
+            }
+        }
+        stage ("Print inside backend") {
+            steps {
+                dir('Backend') {
+                    sh 'pwd'
+                    sh 'ls'
+                }
+            }
+        }
+        stage ("Print inside backend target") {
+            steps {
+                dir('Backend/target') {
+                    sh 'pwd'
+                    sh 'ls'
+                }
+            }
+        }
+        stage ("SonarQube Analysis") {
+            steps {
+                dir('Backend') {
+                    withSonarQubeEnv('sonar-server') {
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectName=KalopsiaBackend \
+                        -Dsonar.java.binaries=. \
+                        -Dsonar.exclusions=**/*Test.java \
+                        -Dsonar.projectKey=KalopsiaBackend '''
+                    }
+                }
+            }
+        }
+        stage ("Build via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn install'
                 }
             }
         }
