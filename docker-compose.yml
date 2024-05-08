@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: password
+      MYSQL_DATABASE: kalopsia
+
+  spring-boot-app:
+      restart: always
+      build:
+        context: ./Backend
+        dockerfile: Dockerfile.dev
+      ports:
+        - "9010:9010"
+      depends_on:
+        - mysql
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/kalopsia?createIfNotExists=true
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: password
