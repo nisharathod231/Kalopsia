@@ -1,5 +1,8 @@
 USE kalopsia;
-CREATE TABLE product IF NOT EXISTS (
+
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE IF NOT EXISTS product (
 	id int AUTO_INCREMENT,
     name varchar(255),
     image varchar(255),
@@ -9,7 +12,9 @@ CREATE TABLE product IF NOT EXISTS (
     primary key (id)
 );
 
-CREATE TABLE user IF NOT EXISTS (
+INSERT INTO product values (1, 'Sapphire Whisper Platinum Ensemble', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Hazel-Bracelet-300x500.webp', 89.0, 67.0, 'Accessories');
+
+CREATE TABLE IF NOT EXISTS user (
     id integer auto_increment,
     email varchar(255),
     name varchar(255),
