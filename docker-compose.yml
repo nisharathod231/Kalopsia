@@ -1,5 +1,13 @@
 version: '3'
 services:
+  react-app:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./FrontEnd
+    ports:
+      - "3000:3000"
+    depends_on:
+      - spring-boot-app
   mysql:
     image: mysql:latest
     ports:
