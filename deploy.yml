@@ -1,0 +1,8 @@
+- name: Pull Docker Image from Docker Hub
+  hosts: myhosts
+  tasks:
+    - name: Removing container if already exists
+      shell: docker-compose down
+
+    - name: Running container
+      shell: docker-compose up --build
