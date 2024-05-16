@@ -35,22 +35,6 @@ pipeline {
                 }
             }
         }
-        stage ("Print inside backend") {
-            steps {
-                dir('Backend') {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
-        }
-        stage ("Print inside backend target") {
-            steps {
-                dir('Backend/target') {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
-        }
         stage ("SonarQube Analysis") {
             steps {
                 dir('Backend') {
@@ -75,7 +59,7 @@ pipeline {
         stage ("Create Docker Image of Backend") {
             steps {
                 dir('Backend') {
-                    sh 'docker build -t nishthapaul/kalopsia-backend .'
+                    sh 'docker build -t nishthapaul/kalopsia-backend -f Dockerfile.dev .'
                 }
             }
         }
@@ -91,7 +75,7 @@ pipeline {
         stage ("Create Docker Image of Frontend") {
             steps {
                 dir('FrontEnd') {
-                    sh 'docker build -t nishthapaul/kalopsia-frontend .'
+                    sh 'docker build -t nishthapaul/kalopsia-frontend -f Dockerfile.dev .'
                 }
             }
         }
