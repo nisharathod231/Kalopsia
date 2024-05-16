@@ -1,9 +1,7 @@
 version: '3'
 services:
   react-app:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./FrontEnd
+    image: nishthapaul/kalopsia-frontend
     ports:
       - "3000:3000"
     depends_on:
@@ -22,9 +20,7 @@ services:
 
   spring-boot-app:
     restart: always
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile.dev
+    image: nishthapaul/kalopsia-backend
     ports:
       - "9010:9010"
     depends_on:
