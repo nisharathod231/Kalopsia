@@ -5,6 +5,8 @@ pipeline {
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+        DOCKERHUB_USERNAME='nishthapaul'
     }
     stages {
         stage ("Clone Git") {
@@ -67,6 +69,46 @@ pipeline {
                 dir('Backend') {
                     sh 'mvn install'
                 }
+            }
+        }
+
+        stage ("Create Docker Image of Backend") {
+            steps {
+                dir('Backend') {
+                    sh 'docker build -t nishthapaul/kalopsia-backend .'
+                }
+            }
+        }
+
+        stage ("Compile via NPM") {
+            steps {
+                dir('FrontEnd') {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage ("Create Docker Image of Frontend") {
+            steps {
+                dir('FrontEnd') {
+                    sh 'docker build -t nishthapaul/kalopsia-frontend .'
+                }
+            }
+        }
+
+        stage ("Push Docker Image") {
+            steps {
+                script {
+                    sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_CREDENTIALS'
+                    sh 'docker push nishthapaul/kalopsia-backend'
+                    sh 'docker push nishthapaul/kalopsia-frontend'
+                }
+            }
+        }
+
+        stage ("Run Ansible Playbook") {
+            steps {
+                sh 'ansible-playbook -i inventory2.ini playbook.yml'
             }
         }
     }
