@@ -1,6 +1,7 @@
 USE kalopsia;
 
 DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE IF NOT EXISTS product (
 	id int AUTO_INCREMENT,
@@ -38,5 +39,3 @@ CREATE TABLE IF NOT EXISTS user (
     password varchar(255),
     primary key (id)
 );
-
-INSERT INTO user values (1, 'ramkapoor@gmail.com', 'Ram Kapoor', 'pass1');
