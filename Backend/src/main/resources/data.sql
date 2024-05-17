@@ -26,7 +26,7 @@ INSERT INTO product values (11, 'Celestial Velvet Luminary Necklace', 'https://w
 INSERT INTO product values (12, 'Enchanting Lace Euphoria Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Chloe-Pendant-300x500.webp', 1100, 750, 'Accessories');
 INSERT INTO product values (13, 'Regal Crimson Stardust Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Dylan-Necklace-300x500.jpg', 1500, 1200, 'Accessories');
 INSERT INTO product values (14, 'Luxury Retreat Moonlit Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Wallace-Hair-Ribbon-300x500.jpg', 600, 459, 'Accessories');
-INSERT INTO product values (15, 'Opulent Bohemian Starfall Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Joy-Mini-Hair-Ribbon-300x500.jp', 800, 550, 'Accessories');
+INSERT INTO product values (15, 'Opulent Bohemian Starfall Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Joy-Mini-Hair-Ribbon-300x500.jpg', 800, 550, 'Accessories');
 INSERT INTO product values (16, 'Vintage Glamour Ethereal Diamond Cascade', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Lindsay-Hair-Chain-300x500.jpg', 1000, 799, 'Accessories');
 INSERT INTO product values (17, 'Edgy Luxe Midnight Serpent Necklace', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Alex-Earring-300x500.jpg', 950, 695, 'Accessories');
 INSERT INTO product values (18, 'Sapphire Whisper Platinum Ensemble', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Hazel-Bracelet-300x500.webp', 1200, 890, 'Accessories');
@@ -38,3 +38,5 @@ CREATE TABLE IF NOT EXISTS user (
     password varchar(255),
     primary key (id)
 );
+
+INSERT INTO user values (1, 'ramkapoor@gmail.com', 'Ram Kapoor', 'pass1');
