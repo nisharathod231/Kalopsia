@@ -1,7 +1,6 @@
 USE kalopsia;
 
 DROP TABLE IF EXISTS product;
-DROP TABLE IF EXISTS user;
 
 CREATE TABLE IF NOT EXISTS product (
 	id int AUTO_INCREMENT,
