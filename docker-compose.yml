@@ -1,11 +1,53 @@
 version: '3'
 services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    container_name: elastic_springboot
+    environment:
+      - bootstrap_memory_lock = true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.3.3
+    container_name: kibana_springboot
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    restart: always
+    image: docker.elastic.co/logstash/logstash:8.3.3
+    container_name: logstash_springboot
+    volumes:
+      - ./ELK/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./ELK/logstash/pipeline:/usr/share/logstash/pipeline:re
+    environment:
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+    ports:
+      - "5044:5044"
+      - "5001:5001/tcp"
+      - "5001:5001/udp"
+      - "9600:9600"
+    depends_on:
+      - elasticsearch
+
   react-app:
     image: nishthapaul/kalopsia-frontend
     ports:
       - "3000:3000"
     depends_on:
       - spring-boot-app
+
   mysql:
     image: mysql:latest
     ports:
@@ -25,9 +67,15 @@ services:
       - "9010:9010"
     depends_on:
       - mysql
+      - logstash
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/kalopsia?createIfNotExists=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
+      LOGGING_LOGSTASH_HOST: logstash_springboot
+      LOGGING_LOGSTASH_PORT: 5001
+
 volumes:
+  elastic_data:
+    driver: local
   v-kalopsia-db:
