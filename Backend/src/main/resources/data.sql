@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS product (
     primary key (id)
 );
 
-INSERT INTO product values (1, 'Sapphire Whisper Platinum Ensemble', 'https://whitesatin.ca/wp-content/uploads/2021/11/Sara-Gabriel-Hazel-Bracelet-300x500.webp', 899.99, 1200, 'her');
+INSERT INTO product values (1, 'Elegance Evening Gown', 'https://www.followthefashion.org/wp-content/uploads/2023/05/Gigi-Hadid-Givency.jpg', 899.99, 1200, 'her');
 INSERT INTO product values (2, 'Royal Velvet Gala Jumpsuit', 'https://img.bekiamoda.com/looks/2000/2315-p1.jpg', 950, 655, 'her');
 INSERT INTO product values (3, 'Exquisite Lace Affair Maxi Dress', 'https://i.pinimg.com/474x/ea/12/e2/ea12e2deb52f4e1e8ed59767c84fb785.jpg', 1100, 750, 'her');
 INSERT INTO product values (4, 'Regal Red Carpet Glamour Gown', 'https://images.hola.com/fashion/imagenes/tendencias/2016021862382/look-de-la-semana-gigi-hadid/0-238-773/look_semana_gigi_hadid_6-a.jpg?tx=w_300', 1500, 1200, 'her');
@@ -33,7 +33,7 @@ INSERT INTO product values (18, 'Sapphire Whisper Platinum Ensemble', 'https://w
 
 CREATE TABLE IF NOT EXISTS user (
     id integer auto_increment,
-    email varchar(255),
+    phone_number varchar(255) UNIQUE,
     name varchar(255),
     password varchar(255),
     primary key (id)
