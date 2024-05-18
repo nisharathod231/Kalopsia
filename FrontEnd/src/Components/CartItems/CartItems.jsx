@@ -8,18 +8,28 @@ import React, { useContext, useState } from 'react';
 import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../Assets/cart_cross_icon.png';
+import axios from 'axios';
 
 const CartItems = () => {
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
     const [isOrderPlacedPopupVisible, setIsOrderPlacedPopupVisible] = useState(false); // State for popup visibility
   
-    const handleCheckoutClick = () => {
+    const handleCheckoutClick = async () => {
         // Check if cart is empty before showing popup or message
         if (Object.keys(cartItems).length === 0) {
           alert('Your cart is empty. Please add items to checkout.');
           return; // Prevent unnecessary state update
         }
-      
+
+        const keysWithOne = Object.keys(cartItems).filter(key => cartItems[key] === 1);
+        const itemList = {
+            items: keysWithOne.map(Number)
+        };
+
+        console.log(itemList)
+
+        await axios.post('http://localhost:9010/api/orders', itemList);
+
         // Simulate successful order processing (no API call needed)
         setIsOrderPlacedPopupVisible(true);
       };
