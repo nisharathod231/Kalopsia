@@ -27,4 +27,4 @@
       command: docker-compose down
 
     - name: Running container
-      command: docker-compose up --build -d
+      command: docker-compose up --build
