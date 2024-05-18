@@ -5,7 +5,8 @@ import Shop from './Pages/Shop';
 import ShopCategory from './Pages/ShopCategory';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
-import LoginSignup from './Pages/LoginSignup';
+import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 // import Breadcrums from '../Components/Breadcrums/Breadcrums';
 
 import Footer from './Components/Footer/Footer';
@@ -23,7 +24,8 @@ function App() {
           <Route path=':productId' element={<Product/>}/>
         </Route>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/login' element={<LoginSignup/>}/>
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
       </Routes> 
       <Footer/>
       </BrowserRouter>
