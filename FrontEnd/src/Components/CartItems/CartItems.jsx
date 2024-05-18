@@ -11,7 +11,7 @@ import remove_icon from '../Assets/cart_cross_icon.png';
 import axios from 'axios';
 
 const CartItems = () => {
-    const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+    const { getTotalCartAmount, all_product, cartItems, removeFromCart,clearCartItems } = useContext(ShopContext);
     const [isOrderPlacedPopupVisible, setIsOrderPlacedPopupVisible] = useState(false); // State for popup visibility
   
     const handleCheckoutClick = async () => {
@@ -32,6 +32,8 @@ const CartItems = () => {
 
         // Simulate successful order processing (no API call needed)
         setIsOrderPlacedPopupVisible(true);
+        removeFromCart();
+        clearCartItems();
       };
 
   return (

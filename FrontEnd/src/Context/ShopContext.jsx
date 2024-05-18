@@ -40,12 +40,15 @@ const ShopContextProvider = (props)=>{
         }
         return totalItem;
     }
+    const clearCartItems = () => {
+        setCartItems(0);
+    }
 
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
     }
 
-    const contextValue = {getTotalCartItems,getTotalCartAmount,all_product, cartItems,addToCart,removeFromCart};
+    const contextValue = {getTotalCartItems,getTotalCartAmount,all_product, cartItems,addToCart,removeFromCart,clearCartItems};
 
     // console.log(cartItems);
     return (

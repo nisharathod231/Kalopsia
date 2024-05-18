@@ -2,15 +2,18 @@ import React, { useContext, useState, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../Assets/logo.png';
 import cart_icon from '../Assets/cart_icon.png';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("holiday");
   const { getTotalCartItems } = useContext(ShopContext);
+  const { clearCartItems } = useContext(ShopContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -25,6 +28,8 @@ const Navbar = () => {
     setIsLoggedIn(false);
     setUserName('');
     setShowLogoutModal(false);
+    navigate('/login');
+    clearCartItems();
   };
 
   return (
@@ -35,11 +40,12 @@ const Navbar = () => {
           <li onClick={() => { (setMenu("shop")) }}><Link style={{ textDecoration: 'none', color: '#000' }} to='/'>Holiday Collection</Link>{menu === "shop" ? <hr /> : <></>}</li>
           <li onClick={() => { (setMenu("her")) }}><Link style={{ textDecoration: 'none', color: '#000' }} to='/her'>Her's Only</Link>{menu === "her" ? <hr /> : <></>}</li>
           <li onClick={() => { (setMenu("Accessories")) }}><Link style={{ textDecoration: 'none', color: '#000' }} to='/Accessories'>Accessories</Link>{menu === "Accessories" ? <hr /> : <></>}</li>
-        </ul>
+       <li>
         <div className='nav-login-cart'>
           {isLoggedIn ? (
             <>
               <span>{userName}</span>
+
               <button onClick={() => setShowLogoutModal(true)}>Logout</button>
             </>
           ) : (
@@ -48,6 +54,8 @@ const Navbar = () => {
           <Link to='/cart'><img src={cart_icon} alt="Unable to load img" /></Link>
           <div className='nav-cart-count'>{getTotalCartItems()}</div>
         </div>
+        </li>
+        </ul>
       </div>
       {showLogoutModal && (
         <div className="logout-modal">

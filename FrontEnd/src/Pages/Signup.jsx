@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:0/api/users/signup', formData);
+      const response = await axios.post('http://localhost:9010/api/users/signup', formData);
       if (response.status === 201) {
         window.location.href = '/login';
       }
@@ -61,7 +61,7 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Continue</button>
+          <button type="submit">Sign Up</button>
         </form>
         <p className="loginsignup-login">
           Already have an account? <a href="/login">Login here</a>

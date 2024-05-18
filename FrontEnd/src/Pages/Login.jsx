@@ -23,6 +23,7 @@ const Login = () => {
       if (response.status === 200) {
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/');
+        window.location.reload();
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
