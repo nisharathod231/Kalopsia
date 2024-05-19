@@ -93,11 +93,11 @@ pipeline {
             }
         }
 
-        // stage ("Run Ansible Playbook") {
-        //     steps {
-        //         sh 'ansible-playbook -i inventory.ini playbook.yml'
-        //     }
-        // }
+        stage ("Run Ansible Playbook") {
+            steps {
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
+            }
+        }
     }
     // post {
     //     success {
