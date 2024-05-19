@@ -59,13 +59,13 @@ pipeline {
             }
         }
 
-        // stage ("Create Docker Image of Backend") {
-        //     steps {
-        //         dir('Backend') {
-        //             sh 'docker build -t nishthapaul/kalopsia-backend -f Dockerfile.dev .'
-        //         }
-        //     }
-        // }
+        stage ("Create Docker Image of Backend") {
+            steps {
+                dir('Backend') {
+                    sh 'docker build -t nishthapaul/kalopsia-backend -f Dockerfile.dev .'
+                }
+            }
+        }
 
         stage ("Compile via NPM") {
             steps {
@@ -75,23 +75,23 @@ pipeline {
             }
         }
 
-        // stage ("Create Docker Image of Frontend") {
-        //     steps {
-        //         dir('FrontEnd') {
-        //             sh 'docker build -t nishthapaul/kalopsia-frontend -f Dockerfile.dev .'
-        //         }
-        //     }
-        // }
+        stage ("Create Docker Image of Frontend") {
+            steps {
+                dir('FrontEnd') {
+                    sh 'docker build -t nishthapaul/kalopsia-frontend -f Dockerfile.dev .'
+                }
+            }
+        }
 
-        // stage ("Push Docker Image") {
-        //     steps {
-        //         script {
-        //             sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_CREDENTIALS'
-        //             sh 'docker push nishthapaul/kalopsia-backend'
-        //             sh 'docker push nishthapaul/kalopsia-frontend'
-        //         }
-        //     }
-        // }
+        stage ("Push Docker Image") {
+            steps {
+                script {
+                    sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_CREDENTIALS'
+                    sh 'docker push nishthapaul/kalopsia-backend'
+                    sh 'docker push nishthapaul/kalopsia-frontend'
+                }
+            }
+        }
 
         // stage ("Run Ansible Playbook") {
         //     steps {
