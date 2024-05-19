@@ -40,12 +40,12 @@ pipeline {
                 dir('Backend') {
                     withSonarQubeEnv('sonar-kalopsia') {
                         sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=KalopsiaBackend \
+                        -Dsonar.projectName=Kalopsia \
                         -Dsonar.java.binaries=. \
                         -Dsonar.sources=src/main/java \
                         -Dsonar.sourceEncoding=UTF-8 \
                         -Dsonar.language=java \
-                        -Dsonar.projectKey=KalopsiaBackend '''
+                        -Dsonar.projectKey=Kalopsia '''
                     }
                 }
             }
