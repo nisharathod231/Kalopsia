@@ -149,7 +149,7 @@
                         <exclude>**/BackendApplication.**</exclude>
                         <exclude>**/entity/**</exclude>
                         <exclude>**/request/**</exclude>
-                        <exclude>**Test.java**</exclude>
+                        <exclude>**/exception/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
