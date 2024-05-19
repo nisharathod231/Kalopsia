@@ -135,13 +135,20 @@
             </plugin>
 
             <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
                 <configuration>
                     <excludes>
                         <exclude>**/BackendApplication.**</exclude>
-                        <exclude>**/Product.**</exclude>
+                        <exclude>**/entity/**</exclude>
+                        <exclude>**/request/**</exclude>
                         <exclude>**Test.java**</exclude>
                     </excludes>
                 </configuration>
