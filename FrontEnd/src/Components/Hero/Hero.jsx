@@ -3,6 +3,7 @@ import './Hero.css'
 import k_icon from '../Assets/k_icon.png'
 import arrow_icon from '../Assets/arrow.png'
 import hero from '../Assets/hero.jpg'
+import mango from '../Assets/mango.jpeg'
 const Hero = () => {
   return (
     <div className='hero'>
@@ -22,7 +23,7 @@ const Hero = () => {
             </div>
         </div>
         <div className="hero-right">
-            <img src={hero} alt="" />
+            <img src={mango} alt="" />
         </div>
     </div>
   )
