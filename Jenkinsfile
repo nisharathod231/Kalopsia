@@ -50,7 +50,7 @@ pipeline {
         //         }
         //     }
         // }
-        
+
         stage ("Build via Maven") {
             steps {
                 dir('Backend') {
@@ -67,13 +67,13 @@ pipeline {
         //     }
         // }
 
-        // stage ("Compile via NPM") {
-        //     steps {
-        //         dir('FrontEnd') {
-        //             sh 'npm install'
-        //         }
-        //     }
-        // }
+        stage ("Compile via NPM") {
+            steps {
+                dir('FrontEnd') {
+                    sh 'npm install'
+                }
+            }
+        }
 
         // stage ("Create Docker Image of Frontend") {
         //     steps {
