@@ -28,13 +28,13 @@ pipeline {
                 }
             }
         }
-        // stage ("Check Code Coverage") {
-        //     steps {
-        //         dir('Backend') {
-        //             sh 'mvn verify'
-        //         }
-        //     }
-        // }
+        stage ("Check Code Coverage") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn verify'
+                }
+            }
+        }
         // stage ("SonarQube Analysis") {
         //     steps {
         //         dir('Backend') {
@@ -99,9 +99,9 @@ pipeline {
             }
         }
     }
-    // post {
-    //     success {
-    //         jacoco()
-    //     }
-    // }
+    post {
+        success {
+            jacoco()
+        }
+    }
 }
