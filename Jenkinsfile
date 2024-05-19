@@ -14,20 +14,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/nisharathod231/Kalopsia.git'
             }
         }
-        // stage ("Compile via Maven") {
-        //     steps {
-        //         dir('Backend') {
-        //             sh 'mvn clean compile'
-        //         }
-        //     }
-        // }
-        // stage ("Unit Tests via Maven") {
-        //     steps {
-        //         dir('Backend') {
-        //             sh 'mvn test'
-        //         }
-        //     }
-        // }
+        stage ("Compile via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        stage ("Unit Tests via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn test'
+                }
+            }
+        }
         // stage ("Check Code Coverage") {
         //     steps {
         //         dir('Backend') {
@@ -50,13 +50,14 @@ pipeline {
         //         }
         //     }
         // }
-        // stage ("Build via Maven") {
-        //     steps {
-        //         dir('Backend') {
-        //             sh 'mvn install'
-        //         }
-        //     }
-        // }
+        
+        stage ("Build via Maven") {
+            steps {
+                dir('Backend') {
+                    sh 'mvn install'
+                }
+            }
+        }
 
         // stage ("Create Docker Image of Backend") {
         //     steps {
