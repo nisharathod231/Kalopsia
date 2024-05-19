@@ -34,12 +34,11 @@ class ProductServiceImplTest {
 
     @Test
     public void shouldReturnAllProductsWhenFindAllIsCalled() {
-        assertEquals(1, 1);
-//        when(productRepository.findAll()).thenReturn(products);
-//
-//        List<Product> retrievedProducts = productService.getAllProducts();
-//
-//        assertEquals(products, retrievedProducts);
+        when(productRepository.findAll()).thenReturn(products);
+
+        List<Product> retrievedProducts = productService.getAllProducts();
+
+        assertEquals(products, retrievedProducts);
     }
 
     @Test
