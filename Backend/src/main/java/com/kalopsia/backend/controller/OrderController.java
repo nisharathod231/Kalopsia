@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @PostMapping
     public void placeOrder(@RequestBody OrderRequest orderRequest) {
