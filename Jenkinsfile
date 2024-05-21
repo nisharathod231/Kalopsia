@@ -17,7 +17,7 @@ pipeline {
         stage ("Compile via Maven") {
             steps {
                 dir('Backend') {
-                    sh 'mvn clean compile'
+                    sh 'mvn clean compilepp'
                 }
             }
         }
@@ -102,6 +102,12 @@ pipeline {
     post {
         success {
             jacoco()
+        }
+        failure {
+            script {
+                def jenkinsBuildUrl = "http://localhost:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}/console"
+                mail bcc: '', cc: '', from: '', replyTo: '', to: 'paulnishtha19@gmail.com', subject: "Pipeline failed in Jenkins: ${env.JOB_NAME} - #${env.BUILD_NUMBER}", body: "Check console output at ${jenkinsBuildUrl} to view the results."
+            }
         }
     }
 }
