@@ -17,7 +17,7 @@ pipeline {
         stage ("Compile via Maven") {
             steps {
                 dir('Backend') {
-                    sh 'mvn clean compilepp'
+                    sh 'mvn clean compile'
                 }
             }
         }
