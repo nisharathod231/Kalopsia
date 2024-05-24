@@ -37,20 +37,22 @@ pipeline {
         }
         stage ("SonarQube Analysis") {
             steps {
-                try {
-                    dir('Backend') {
-                        withSonarQubeEnv('sonar-kalopsia') {
-                            sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                            -Dsonar.projectName=KalopsiaBackend \
-                            -Dsonar.java.binaries=. \
-                            -Dsonar.sources=src/main/java \
-                            -Dsonar.sourceEncoding=UTF-8 \
-                            -Dsonar.language=java \
-                            -Dsonar.projectKey=KalopsiaBackend '''
+                script {
+                    try {
+                        dir('Backend') {
+                            withSonarQubeEnv('sonar-kalopsia') {
+                                sh ''' $SCANNER_HOME/bin/sonar-scanner \
+                                -Dsonar.projectName=KalopsiaBackend \
+                                -Dsonar.java.binaries=. \
+                                -Dsonar.sources=src/main/java \
+                                -Dsonar.sourceEncoding=UTF-8 \
+                                -Dsonar.language=java \
+                                -Dsonar.projectKey=KalopsiaBackend '''
+                            }
                         }
+                    } catch (err) {
+                        echo err.getMessage()
                     }
-                } catch (err) {
-                    echo err.getMessage()
                 }
             }
         }
