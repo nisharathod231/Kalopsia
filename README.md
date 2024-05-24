@@ -31,6 +31,6 @@ Ensure that you have all these tools installed in your system
 ## Run the Application
 Follow this [document](https://docs.google.com/document/d/1ikpOo5X1cXyDQO_YhA_caBkZ4w-jaeSah6-nyNU2z2w/edit?usp=sharing) for setting up the project.
 
-By leveraging logging and website analytics, Kalopsia provides valuable insights into user behavior and sales trends, empowering informed decision-making.
+By leveraging logging and website analytics, Kalopsia provides valuable insights into user behavior and sales trends, empowering informed decision-making
 
 <img width="654" alt="Screenshot 2024-05-23 at 10 21 33 AM" src="https://github.com/nishthapaul/academia-portal/assets/33231250/89086a13-b18a-42b1-a9eb-21f81a505372">
